@@ -16,13 +16,15 @@ void loop(){
   digitalWrite(TRIGPIN, LOW);
   int distance = pulseIn(ECHOPIN, HIGH,26000);
   distance= distance/58;
-  
+  Serial.println(".");
+  Serial.println();
   if(distance < 40){
-    Serial.print(distance);
     Serial.println("lap found");
+    Serial.println();
     digitalWrite(NOTIFYPIN, HIGH); 
-    delayMicroseconds(10);
+    delay(1000);
     digitalWrite(NOTIFYPIN, LOW);
+    delay(2500); //average wall return time
   }
   
   delay(50);
